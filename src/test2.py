@@ -18,6 +18,16 @@ def display1():
     glFlush()
 
 
+def display2():
+    glClear(GL_COLOR_BUFFER_BIT)
+    glEnable(GL_LINE_STIPPLE)
+    glLineStipple(2, 0x0F0F)
+    glLineWidth(10.0)
+    glBegin(GL_LINES)
+    glVertex2f(0, 0)
+    glVertex2f(0.5, 0.5)
+    glEnd()
+    glFlush()
 
 
 def main():
@@ -26,7 +36,7 @@ def main():
     glutInitWindowSize(500, 500)
     glutInitWindowPosition(100, 100)
     glutCreateWindow("An Opengl Programming")
-    glutDisplayFunc(display1)
+    glutDisplayFunc(display2)
     glutMainLoop()
 
 
