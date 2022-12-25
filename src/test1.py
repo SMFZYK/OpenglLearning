@@ -47,9 +47,9 @@ def display():
     gluLookAt(3.0, 3.0, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0)
 
     glPushMatrix()
-    glRotatef(0, 1.0, 0.0, 0.0)
-    glRotatef(0, 0.0, 1.0, 0.0)
-    glRotatef(0, 0.0, 0.0, 1.0)
+    glRotatef(xx, 1.0, 0.0, 0.0)
+    glRotatef(yy, 0.0, 1.0, 0.0)
+    glRotatef(zz, 0.0, 0.0, 1.0)
     glutSolidTeapot(1.3)
     glPopMatrix()
     glutSwapBuffers()
@@ -62,10 +62,30 @@ def reshape(w, h):
     gluPerspective(60.0, w / h, 1.0, 20.0)
 
 
-# def keyboard(key, x, y):
-#     if key == 'x':
-#         xx = (xx + 5) % 360
-#         glutPostRedisplay()
+def keyboard(key, x, y):
+    global xx
+    global yy
+    global zz
+    if key == 'x':
+        xx = (xx + 5) % 360
+        glutPostRedisplay()
+    elif key == 'X':
+        xx = (xx - 5) % 360
+        glutPostRedisplay()
+    elif key == 'y':
+        yy = (yy + 5) % 360
+        glutPostRedisplay()
+    elif key == 'Y':
+        yy = (yy - 5) % 360
+        glutPostRedisplay()
+    elif key == 'z':
+        zz = (zz + 5) % 360
+        glutPostRedisplay()
+    elif key == 'Z':
+        zz = (zz - 5) % 360
+        glutPostRedisplay()
+    else:
+        pass
 
 
 def main():
@@ -77,7 +97,7 @@ def main():
     init()
     glutDisplayFunc(display)
     glutReshapeFunc(reshape)
-    # glutKeyboardFunc(keyboard)
+    glutKeyboardFunc(keyboard)
     glutMainLoop()
 
 
